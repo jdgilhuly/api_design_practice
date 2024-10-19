@@ -4,9 +4,34 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+alembic = "~=1.13.3"
+annotated-types = "~=0.7.0"
+anyio = "~=4.6.2"
+async-timeout = "~=4.0.3"
+asyncpg = "~=0.29.0"
+click = "~=8.1.7"
+databases = "~=0.9.0"
+fastapi = "~=0.115.2"
+h11 = "~=0.14.0"
+idna = "~=3.10"
+mako = "~=1.3.5"
+markupsafe = "~=3.0.2"
+pydantic = "~=2.9.2"
+pydantic-core = "~=2.23.4"
+python-dotenv = "~=1.0.1"
+sniffio = "~=1.3.1"
+sqlalchemy = "~=2.0.36"
+starlette = "~=0.40.0"
+typing-extensions = "~=4.12.2"
+uvicorn = "~=0.32.0"
 
 [dev-packages]
+exceptiongroup = "~=1.2.2"
+iniconfig = "~=2.0.0"
+packaging = "~=24.1"
+pluggy = "~=1.5.0"
+pytest = "~=8.3.3"
+tomli = "~=2.0.2"
 
 [requires]
 python_version = "3.9"
-python_full_version = "3.9.20"
