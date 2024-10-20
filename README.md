@@ -4,19 +4,42 @@
 
 This Event Management System API is a robust backend solution for managing events, user registrations, and ticket generation. Built with FastAPI and SQLAlchemy, it provides a scalable and efficient platform for event organizers and attendees.
 
-## Features
+## Project Scope
 
-- **User Management**: Registration, authentication, and profile management
-- **Event Management**: Create, read, update, and delete events
+### Core Features
+
+- **Users**: Registration, authentication, and profile management
+- **Events**: Create, read, update, and delete events
 - **Event Registration**: Allow users to register for events
-- **Ticket Management**: Generate and manage tickets for registered users
-- **Role-Based Access Control**: Differentiate between regular users and event organizers
+- **Tickets**: Generate and manage tickets for registered users
+
+### Entities/Resources
+
+- **User**: name, email, password, roles
+- **Event**: title, description, date, location, organizer
+- **Registration**: user_id, event_id, status
+- **Ticket**: registration_id, QR code, status
+
+## Best Practices Implemented
+
+- **Authentication and Authorization**:
+  - JWT for authentication
+  - Role-based access control (e.g., organizer vs. regular user)
 - **API Versioning**: Structured for easy updates and backward compatibility
-- **Pagination and Filtering**: Efficient data retrieval for events
+- **Pagination and Filtering**:
+  - Efficient data retrieval for events (e.g., GET /events?page=2&limit=10)
+  - Filtering by date, location, or organizer
 - **Error Handling**: Consistent and informative error responses
 - **Data Validation**: Ensure data integrity with Pydantic models
 - **Rate Limiting**: Prevent API abuse
 - **API Documentation**: Interactive API documentation with Swagger/OpenAPI
+- **Testing**: Unit tests and integration tests for major API flows
+- **Deployment**:
+  - Cloud deployment ready (e.g., AWS, Heroku)
+  - Docker containerization for consistent environments
+- **Security Considerations**:
+  - Input sanitization to prevent SQL injection
+  - HTTPS enforcement for public deployments
 
 ## Tech Stack
 
@@ -26,7 +49,9 @@ This Event Management System API is a robust backend solution for managing event
 - **Alembic**: Database migration tool
 - **PostgreSQL**: Robust, open-source database
 - **JWT**: JSON Web Tokens for secure authentication
+- **Redis**: For rate limiting implementation
 - **Uvicorn**: ASGI server for running the application
+- **Docker**: For containerization
 
 ## Getting Started
 
@@ -34,7 +59,8 @@ This Event Management System API is a robust backend solution for managing event
 
 - Python 3.9+
 - PostgreSQL
-- pipenv (for dependency management)
+- Redis
+- Docker (optional)
 
 ### Installation
 
@@ -46,7 +72,7 @@ This Event Management System API is a robust backend solution for managing event
 
 2. Install dependencies:
    ```
-   pipenv install
+   pip install -r requirements.txt
    ```
 
 3. Set up environment variables:
@@ -54,6 +80,7 @@ This Event Management System API is a robust backend solution for managing event
    ```
    DATABASE_URL=postgresql://user:password@localhost/dbname
    SECRET_KEY=your_secret_key_here
+   REDIS_URL=redis://localhost:6379
    ```
 
 4. Run database migrations:
@@ -78,3 +105,30 @@ Once the server is running, you can access the interactive API documentation at:
 ## Testing
 
 To run tests:
+```
+pytest
+```
+
+## Deployment
+
+For Docker deployment:
+
+1. Build the Docker image:
+   ```
+   docker build -t event-management-api .
+   ```
+
+2. Run the container:
+   ```
+   docker run -p 8000:8000 event-management-api
+   ```
+
+For cloud deployment, follow the specific instructions for your chosen platform (AWS, Heroku, etc.).
+
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct and the process for submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
