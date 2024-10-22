@@ -59,10 +59,26 @@ This Event Management System API is a robust backend solution for managing event
 
 - Python 3.9+
 - PostgreSQL
-- Redis
-- Docker (optional)
+- Docker and Docker Compose (for containerized setup)
 
-### Installation
+### Running with Docker Compose
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/event-management-api.git
+   cd event-management-api
+   ```
+
+2. Build and start the containers:
+   ```
+   docker-compose up --build
+   ```
+
+   This command will build the Docker images and start the containers for the web application and the PostgreSQL database.
+
+3. The API will be available at `http://localhost:8000`.
+
+### Running Locally
 
 1. Clone the repository:
    ```
@@ -72,28 +88,24 @@ This Event Management System API is a robust backend solution for managing event
 
 2. Install dependencies:
    ```
-   pip install -r requirements.txt
+   pipenv install
    ```
 
-3. Set up environment variables:
-   Create a `.env` file in the root directory and add the following:
+3. Set up the local PostgreSQL database:
+   - Create a database named "test"
+   - Create a user "tester" with password "georgie"
+   - Grant all privileges on the "test" database to "tester"
+
+4. Start the application:
    ```
-   DATABASE_URL=postgresql://user:password@localhost/dbname
-   SECRET_KEY=your_secret_key_here
-   REDIS_URL=redis://localhost:6379
+   pipenv run uvicorn app.main:app --reload
    ```
 
-4. Run database migrations:
-   ```
-   alembic upgrade head
-   ```
+5. The API will be available at `http://localhost:8000`.
 
-5. Start the server:
-   ```
-   uvicorn app.main:app --reload
-   ```
+### Environment Variables
 
-The API will be available at `http://localhost:8000`.
+For local development, you can create a `.env` file in the root directory with the following content:
 
 ## API Documentation
 
