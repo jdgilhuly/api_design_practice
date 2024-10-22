@@ -25,6 +25,7 @@ uvicorn = "~=0.32.0"
 passlib = {version = "*", extras = ["bcrypt"]}
 pydantic = {version = "*", extras = ["email"]}
 fastapi = {version = "*", extras = ["all"]}
+psycopg2-binary = "*"
 
 [dev-packages]
 exceptiongroup = "~=1.2.2"
