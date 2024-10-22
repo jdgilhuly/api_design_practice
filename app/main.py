@@ -1,11 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.core.database import engine, Base
+from app.core.database import engine, Base, SessionLocal
 from app.routers import user  # Import your user router
 from sqlalchemy import text
+from app.core.seed import seed_database
 
 # Create the database tables
 Base.metadata.create_all(bind=engine)
+
+# Seed the database
+with SessionLocal() as db:
+    seed_database(db)
 
 # Initialize FastAPI app
 app = FastAPI()

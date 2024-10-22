@@ -39,4 +39,11 @@ tomli = "~=2.0.2"
 python_version = "3.9"
 
 [scripts]
+# Initialize the database and start the API
+api_init = "alembic upgrade head && uvicorn app.main:app --reload"
+
+# Start the API
 api = "uvicorn app.main:app --reload"
+
+
+

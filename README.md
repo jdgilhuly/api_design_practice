@@ -65,8 +65,8 @@ This Event Management System API is a robust backend solution for managing event
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/event-management-api.git
-   cd event-management-api
+   git clone https://github.com/jdgilhuly/api_design_practice.git
+   cd api_design_practice
    ```
 
 2. Build and start the containers:
@@ -82,8 +82,8 @@ This Event Management System API is a robust backend solution for managing event
 
 1. Clone the repository:
    ```
-   git clone https://github.com/yourusername/event-management-api.git
-   cd event-management-api
+   git clone https://github.com/jdgilhuly/api_design_practice.git
+   cd api_design_practice
    ```
 
 2. Install dependencies:
@@ -93,7 +93,7 @@ This Event Management System API is a robust backend solution for managing event
 
 3. Set up the local PostgreSQL database:
    - Create a database named "test"
-   - Create a user "tester" with password "georgie"
+   - Create a user "tester" with password "password"
    - Grant all privileges on the "test" database to "tester"
 
 4. Start the application:

@@ -11,15 +11,16 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgresql://tester:georgie@db:5432/test
+      - DATABASE_URL=postgresql://tester:password@db:5432/test
 
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./data_base_seeding/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       - POSTGRES_USER=tester
-      - POSTGRES_PASSWORD=georgie
+      - POSTGRES_PASSWORD=password
       - POSTGRES_DB=test
 
 volumes:
