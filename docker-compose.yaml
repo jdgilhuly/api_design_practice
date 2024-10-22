@@ -5,8 +5,8 @@ services:
     image: postgres:13
     container_name: postgres-db
     environment:
-      POSTGRES_USER: your_username
-      POSTGRES_PASSWORD: your_password
+      POSTGRES_USER: tester #your_username
+      POSTGRES_PASSWORD: georgie #your_password
       POSTGRES_DB: event_management
     ports:
       - "5432:5432"
