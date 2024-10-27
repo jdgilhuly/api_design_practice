@@ -10,8 +10,10 @@ services:
       - "8000:8000"
     depends_on:
       - db
+      - redis
     environment:
       - DATABASE_URL=postgresql://tester:password@db:5432/test
+      - REDIS_URL=redis://redis:6379/0
 
   db:
     image: postgres:13
@@ -22,6 +24,11 @@ services:
       - POSTGRES_USER=tester
       - POSTGRES_PASSWORD=password
       - POSTGRES_DB=test
+
+  redis:
+    image: redis:alpine
+    ports:
+      - "6379:6379"
 
 volumes:
   postgres_data:

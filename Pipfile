@@ -28,6 +28,7 @@ fastapi = {version = "*", extras = ["all"]}
 psycopg2-binary = "*"
 python-jose = {extras = ["cryptography"], version = "*"}
 python-multipart = "*"
+redis = "*"
 
 [dev-packages]
 exceptiongroup = "~=1.2.2"
