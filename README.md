@@ -144,3 +144,15 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## TODO:
+Authentication and authorization
+Database relationships and queries
+Caching and rate limiting
+File handling
+Real-time communication
+Background task processing
+API documentation
+Error handling
+Data validation
+Testing (you can write tests for each feature)

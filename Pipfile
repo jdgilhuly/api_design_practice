@@ -26,6 +26,8 @@ passlib = {version = "*", extras = ["bcrypt"]}
 pydantic = {version = "*", extras = ["email"]}
 fastapi = {version = "*", extras = ["all"]}
 psycopg2-binary = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+python-multipart = "*"
 
 [dev-packages]
 exceptiongroup = "~=1.2.2"
@@ -44,6 +46,7 @@ api_init = "alembic upgrade head && uvicorn app.main:app --reload"
 
 # Start the API
 api = "uvicorn app.main:app --reload"
+
 
 
 
