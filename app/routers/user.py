@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Depends, status
+from fastapi import APIRouter, HTTPException, Depends, status, Request, Response
 from sqlalchemy.orm import Session
 from app.core.database import SessionLocal, get_db
 from app.core.auth import (
@@ -11,6 +11,9 @@ from app.modules.user import User
 from app.schemas.user import UserCreate, UserResponse
 from app.schemas.token import Token
 from fastapi.security import OAuth2PasswordRequestForm
+from app.dependencies.rate_limit import rate_limit, rate_limited
+from datetime import timedelta
+
 
 router = APIRouter()
 
@@ -23,7 +26,10 @@ def get_db():
 
 
 @router.post("/token", response_model=Token)
+@rate_limited(limit=5, window=300)  # 5 attempts per 5 minutes
 async def login_for_access_token(
+    request: Request,
+    response: Response,
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
@@ -63,7 +69,13 @@ async def get_users(
     return users
 
 @router.post("/register", response_model=UserResponse)
-async def register_user(user: UserCreate, db: Session = Depends(get_db)):
+@rate_limited(limit=3, window=3600)  # 3 registrations per hour
+async def register_user(
+    request: Request,
+    response: Response,
+    user: UserCreate,
+    db: Session = Depends(get_db)
+):
     # Check if user already exists
     existing_user = db.query(User).filter(User.email == user.email).first()
     if existing_user:

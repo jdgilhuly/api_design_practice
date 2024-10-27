@@ -174,3 +174,15 @@ curl -X POST "http://localhost:8000/api/v1/token" \
 curl -X GET "http://localhost:8000/api/v1/users/me" \
      -H "Authorization: Bearer your_access_token_here"
 ```
+
+
+Test rate limiting:
+```
+for i in {1..6}; do
+    curl -X POST "http://localhost:8000/api/v1/token" \
+         -H "Content-Type: application/x-www-form-urlencoded" \
+         -d "username=test@example.com&password=wrongpassword"
+    echo ""
+    sleep 1
+done
+```
