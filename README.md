@@ -146,7 +146,6 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 ## TODO:
-Authentication and authorization
 Database relationships and queries
 Caching and rate limiting
 File handling
@@ -156,3 +155,22 @@ API documentation
 Error handling
 Data validation
 Testing (you can write tests for each feature)
+
+Authentication:
+
+```
+curl -X POST "http://localhost:8000/api/v1/register" \
+     -H "Content-Type: application/json" \
+     -d '{"email":"user@example.com","password":"password123","username":"testuser"}'
+```
+
+```
+curl -X POST "http://localhost:8000/api/v1/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "username=user@example.com&password=password123"
+```
+
+```
+curl -X GET "http://localhost:8000/api/v1/users/me" \
+     -H "Authorization: Bearer your_access_token_here"
+```
